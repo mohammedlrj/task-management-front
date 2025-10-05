@@ -1,0 +1,97 @@
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200/50 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div routerLink="/home" class="flex items-center space-x-3 cursor-pointer">
+            <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <span class="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+              Task
+            </span>
+          </div>
+
+          <div class="hidden md:flex items-center space-x-1">
+            <a routerLink="/home" 
+               class="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 font-medium cursor-pointer">
+              Home
+            </a>
+            <a routerLink="/tasks/new"
+               class="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 font-medium">
+              Task Form
+            </a>
+            <a routerLink="/tasks" 
+               class="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 font-medium">
+              Task List
+            </a>
+          </div>
+
+          <div class="hidden md:flex items-center space-x-3">
+            <!-- Show Sign In if not logged in -->
+            <button *ngIf="!authService.isAuthenticated()" 
+                    class="px-6 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg font-medium hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 transition-all duration-200 shadow-md hover:shadow-lg">
+              <a routerLink="/login">Sign In</a>
+            </button>
+
+            <!-- Show Logout if logged in -->
+            <button *ngIf="authService.isAuthenticated()" 
+                    (click)="logout()" 
+                    class="px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg font-medium hover:from-red-600 hover:to-red-700 transform hover:scale-105 transition-all duration-200 shadow-md hover:shadow-lg">
+              Logout
+            </button>
+          </div>
+
+          <div class="md:hidden">
+            <button 
+              (click)="toggleMobileMenu()"
+              class="p-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition-colors duration-200">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path *ngIf="!isMobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                <path *ngIf="isMobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div 
+        class="md:hidden transition-all duration-300 ease-in-out overflow-hidden"
+        [class.max-h-0]="!isMobileMenuOpen"
+        [class.max-h-96]="isMobileMenuOpen"
+        [class.opacity-0]="!isMobileMenuOpen"
+        [class.opacity-100]="isMobileMenuOpen">
+        <div class="px-4 pt-2 pb-6 space-y-2 bg-white/90 backdrop-blur-lg border-t border-gray-200/50">
+          <a routerLink="/home" 
+             class="block px-4 py-3 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 font-medium">
+            Home
+          </a>
+          <a routerLink="/tasks/new"
+             class="block px-4 py-3 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 font-medium">
+            Task Form
+          </a>
+          <a routerLink="/tasks" 
+             class="block px-4 py-3 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200 font-medium">
+            Task List
+          </a>
+          
+          <div class="pt-4 space-y-3 border-t border-gray-200/50">
+            <!-- Sign In -->
+            <button *ngIf="!authService.isAuthenticated()" 
+                    routerLink="/login"
+                    class="w-full px-4 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg font-medium hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-md">
+              Sign In
+            </button>
+
+            <!-- Logout -->
+            <button *ngIf="authService.isAuthenticated()" 
+                    (click)="logout()" 
+                    class="w-full px-4 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg font-medium hover:from-red-600 hover:to-red-700 transition-all duration-200 shadow-md">
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="h-16"></div>
