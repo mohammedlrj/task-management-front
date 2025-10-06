@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.prod';
 import { Task } from '../../shared/models/task';
 import { CreateTask } from '../../shared/models/create-task';
 
@@ -9,7 +9,7 @@ import { CreateTask } from '../../shared/models/create-task';
   providedIn: 'root'
 })
 export class TaskService {
-  private apiUrl = `${environment.apiUrl}/Task`
+  private apiUrl = `${environment.apiBaseUrl}/Task`
 
   constructor(private http: HttpClient) { }
 

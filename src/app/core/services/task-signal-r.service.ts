@@ -13,7 +13,7 @@ export class TaskSignalRService {
 
   startConnection() {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl("https://localhost:44383/taskHub")
+      .withUrl("https://taskmanagementapp.azurewebsites.net/taskHub")
       .withAutomaticReconnect()
       .build();
 

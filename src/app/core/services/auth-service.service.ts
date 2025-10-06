@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { RegisterRequest } from '../../shared/models/register-request';
 import { Observable } from 'rxjs';
@@ -10,7 +10,7 @@ import { LoginRequest } from '../../shared/models/login-request';
   providedIn: 'root'
 })
 export class AuthServiceService {
-  private baseUrl = `${environment.apiUrl}/Auth`
+  private baseUrl = `${environment.apiBaseUrl}/Auth`
 
   constructor(private http: HttpClient) { }
 
