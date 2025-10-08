@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginRequest } from '../../shared/models/login-request';
 import { AuthServiceService } from '../../core/services/auth-service.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+
 
 declare const google: any;
 
 @Component({
     selector: 'app-login',
-    imports: [CommonModule, ReactiveFormsModule],
+    imports: [CommonModule, ReactiveFormsModule, RouterModule],
     templateUrl: './login.component.html',
     styleUrl: './login.component.css'
 })
